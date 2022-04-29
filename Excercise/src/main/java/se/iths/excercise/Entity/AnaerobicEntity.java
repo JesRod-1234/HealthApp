@@ -11,6 +11,7 @@ public class AnaerobicEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String name;
+    private Long numberOfRepetitions;
+
 }

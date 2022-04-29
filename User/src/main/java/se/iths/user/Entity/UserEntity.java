@@ -1,9 +1,8 @@
 package se.iths.user.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import se.iths.excercise.Entity.AerobicEntity;
+
+import javax.persistence.*;
 
 @Entity
 public class UserEntity {
@@ -11,7 +10,17 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private Long phoneNumber;
 
-    private String name;
+    @ManyToMany
+    private AerobicEntity aerobicEntity;
+
+
+
+
+
 
 }

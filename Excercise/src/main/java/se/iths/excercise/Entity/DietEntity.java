@@ -11,6 +11,8 @@ public class DietEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String nameOfDish;
+    private Long numberOfCalories;
+    private String mealTimes;
 
-    private String name;
 }
