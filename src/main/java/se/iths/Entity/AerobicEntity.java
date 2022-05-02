@@ -1,8 +1,7 @@
-package se.iths.excercise.Entity;
-
-import se.iths.user.Entity.UserEntity;
+package se.iths.Entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class AerobicEntity {
@@ -14,7 +13,7 @@ public class AerobicEntity {
     private Long duration;
 
     @ManyToMany(mappedBy = "userEntity")
-    private UserEntity userEntity;
+    private List<UserEntity> userEntity;
 
 
 

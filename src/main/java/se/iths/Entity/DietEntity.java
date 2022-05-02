@@ -1,4 +1,4 @@
-package se.iths.excercise.Entity;
+package se.iths.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,12 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class MindfulnessEntity {
+public class DietEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private Long duration;
+    private String nameOfDish;
+    private Long numberOfCalories;
+    private String mealTimes;
 
 }
