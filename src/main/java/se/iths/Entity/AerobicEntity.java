@@ -6,6 +6,9 @@ import java.util.List;
 @Entity
 public class AerobicEntity {
 
+    public AerobicEntity() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,7 +17,6 @@ public class AerobicEntity {
 
     @ManyToMany(mappedBy = "userEntity")
     private List<UserEntity> userEntity;
-
 
 
 }

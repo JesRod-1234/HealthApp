@@ -6,6 +6,9 @@ import java.util.List;
 @Entity
 public class UserEntity {
 
+    public UserEntity() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -28,10 +31,6 @@ public class UserEntity {
 
     @OneToMany
     private List<MindfulnessEntity> mindfulnessEntity;
-
-
-
-
 
 
 }

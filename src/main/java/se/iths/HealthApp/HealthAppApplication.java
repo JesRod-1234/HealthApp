@@ -1,4 +1,4 @@
-package se.iths;
+package se.iths.HealthApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -8,6 +8,9 @@ import javax.persistence.Id;
 @Entity
 public class DietEntity {
 
+    public DietEntity() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
