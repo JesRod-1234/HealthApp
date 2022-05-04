@@ -1,8 +1,8 @@
-package se.iths.service;
+package se.iths.Service;
 
 import org.springframework.stereotype.Service;
 import se.iths.Entity.AnaerobicEntity;
-import se.iths.repository.AnaerobicRepository;
+import se.iths.Repository.AnaerobicRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
@@ -10,14 +10,13 @@ import java.util.Optional;
 @Service
 public class AnaerobicService {
 
-    private  final  AnaerobicRepository anaerobicRepository;
+    private final AnaerobicRepository anaerobicRepository;
 
     public AnaerobicService(AnaerobicRepository anaerobicRepository) {
         this.anaerobicRepository = anaerobicRepository;
     }
 
     public AnaerobicEntity createAnaerobicItem(AnaerobicEntity anaerobic) {
-
         return anaerobicRepository.save(anaerobic);
     }
 

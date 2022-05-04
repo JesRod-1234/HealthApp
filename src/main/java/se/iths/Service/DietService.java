@@ -1,8 +1,8 @@
-package se.iths.service;
+package se.iths.Service;
 
 import org.springframework.stereotype.Service;
 import se.iths.Entity.DietEntity;
-import se.iths.repository.DietRepository;
+import se.iths.Repository.DietRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
@@ -15,8 +15,8 @@ public class DietService {
     public DietService(DietRepository dietRepository) {
         this.dietRepository = dietRepository;
     }
-    public DietEntity createDietItem(DietEntity diet) {
 
+    public DietEntity createDietItem(DietEntity diet) {
         return dietRepository.save(diet);
     }
 

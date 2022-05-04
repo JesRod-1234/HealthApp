@@ -1,16 +1,16 @@
-package se.iths.controller;
+package se.iths.Controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.iths.Entity.AnaerobicEntity;
-import se.iths.service.AnaerobicService;
+import se.iths.Service.AnaerobicService;
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("anaerobics")
-public class AnaerobicController  {
+public class AnaerobicController {
 
     private final AnaerobicService anaerobicService;
 
@@ -41,6 +41,4 @@ public class AnaerobicController  {
         Iterable<AnaerobicEntity> allAnaerobicItems = anaerobicService.findAllAnaerobicItems();
         return new ResponseEntity<>(allAnaerobicItems, HttpStatus.OK);
     }
-
-
 }

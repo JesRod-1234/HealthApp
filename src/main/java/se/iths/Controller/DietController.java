@@ -1,11 +1,10 @@
-package se.iths.controller;
+package se.iths.Controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se.iths.Entity.AnaerobicEntity;
 import se.iths.Entity.DietEntity;
-import se.iths.service.DietService;
+import se.iths.Service.DietService;
 
 import java.util.Optional;
 
@@ -42,5 +41,4 @@ public class DietController {
         Iterable<DietEntity> allDietItems = dietService.findAllIDietItems();
         return new ResponseEntity<>(allDietItems, HttpStatus.OK);
     }
-
 }
