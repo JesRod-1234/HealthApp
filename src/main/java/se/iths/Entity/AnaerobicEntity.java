@@ -2,7 +2,6 @@ package se.iths.Entity;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class AnaerobicEntity {
@@ -13,7 +12,7 @@ public class AnaerobicEntity {
     private String name;
     private Long numberOfRepetitions;
 
-    @ManyToMany(mappedBy = "anaerobicEntity")
+    @ManyToMany(mappedBy = "userEntity")
     private List<UserEntity> userEntities;
 
     public AnaerobicEntity() {

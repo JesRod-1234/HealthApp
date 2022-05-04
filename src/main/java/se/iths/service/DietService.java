@@ -1,8 +1,6 @@
 package se.iths.service;
 
-
 import org.springframework.stereotype.Service;
-import se.iths.Entity.AnaerobicEntity;
 import se.iths.Entity.DietEntity;
 import se.iths.repository.DietRepository;
 

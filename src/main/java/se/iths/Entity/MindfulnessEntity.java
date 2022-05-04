@@ -8,12 +8,12 @@ import javax.persistence.Id;
 @Entity
 public class MindfulnessEntity {
 
-    public MindfulnessEntity() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private Long duration;
+
+    public MindfulnessEntity() {
+    }
 }

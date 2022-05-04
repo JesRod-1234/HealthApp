@@ -33,5 +33,4 @@ public class AnaerobicService {
     public Iterable<AnaerobicEntity> findAllAnaerobicItems() {
         return anaerobicRepository.findAll();
     }
-
 }

@@ -8,12 +8,13 @@ import javax.persistence.Id;
 @Entity
 public class EquipmentEntity {
 
-    public EquipmentEntity() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private Long price;
+
+    public EquipmentEntity() {
+    }
+
 }
