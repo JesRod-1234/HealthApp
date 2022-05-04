@@ -15,8 +15,8 @@ public class UserEntity {
     private String email;
     private Long phoneNumber;
 
-    @ManyToMany
-    private AerobicEntity aerobicEntity;
+//    @ManyToMany
+//    private AerobicEntity aerobicEntity;
 
 
 

@@ -14,4 +14,36 @@ public class MindfulnessEntity {
     private String name;
     private Long duration;
 
+    public MindfulnessEntity(Long id, String name, Long duration) {
+        this.id = id;
+        this.name = name;
+        this.duration = duration;
+    }
+
+    public MindfulnessEntity() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Long duration) {
+        this.duration = duration;
+    }
+
 }
