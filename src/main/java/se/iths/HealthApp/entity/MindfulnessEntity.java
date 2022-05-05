@@ -1,4 +1,4 @@
-package se.iths.Entity;
+package se.iths.HealthApp.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,21 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class EquipmentEntity {
+public class MindfulnessEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private Long price;
+    private Long duration;
 
-    public EquipmentEntity(Long id, String name, Long price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
-
-    public EquipmentEntity() {
+    public MindfulnessEntity() {
     }
 
     public Long getId() {
@@ -39,11 +33,11 @@ public class EquipmentEntity {
         this.name = name;
     }
 
-    public Long getPrice() {
-        return price;
+    public Long getDuration() {
+        return duration;
     }
 
-    public void setPrice(Long price) {
-        this.price = price;
+    public void setDuration(Long duration) {
+        this.duration = duration;
     }
 }

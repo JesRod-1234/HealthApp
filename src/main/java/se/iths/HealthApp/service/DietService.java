@@ -1,8 +1,8 @@
-package se.iths.Service;
+package se.iths.HealthApp.service;
 
 import org.springframework.stereotype.Service;
-import se.iths.Entity.DietEntity;
-import se.iths.Repository.DietRepository;
+import se.iths.HealthApp.entity.DietEntity;
+import se.iths.HealthApp.repository.DietRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;

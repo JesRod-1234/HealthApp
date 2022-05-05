@@ -1,8 +1,8 @@
-package se.iths.Service;
+package se.iths.HealthApp.service;
 
 import org.springframework.stereotype.Service;
-import se.iths.Entity.AnaerobicEntity;
-import se.iths.Repository.AnaerobicRepository;
+import se.iths.HealthApp.entity.AnaerobicEntity;
+import se.iths.HealthApp.repository.AnaerobicRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
