@@ -1,9 +1,6 @@
 package se.iths.HealthApp.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class MindfulnessEntity {
@@ -13,6 +10,9 @@ public class MindfulnessEntity {
     private Long id;
     private String name;
     private Long duration;
+
+    @ManyToOne
+    private UserEntity user;
 
     public MindfulnessEntity() {
     }
@@ -39,5 +39,13 @@ public class MindfulnessEntity {
 
     public void setDuration(Long duration) {
         this.duration = duration;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }

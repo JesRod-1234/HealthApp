@@ -11,6 +11,9 @@ public class DietEntity {
     private Long numberOfCalories;
     private String mealTimes;
 
+    @ManyToOne
+    private UserEntity user;
+
     public DietEntity() {
     }
 
@@ -44,5 +47,13 @@ public class DietEntity {
 
     public void setMealTimes(String mealTimes) {
         this.mealTimes = mealTimes;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }

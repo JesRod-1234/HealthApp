@@ -1,6 +1,7 @@
 package se.iths.HealthApp.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class AnaerobicEntity {
@@ -10,6 +11,9 @@ public class AnaerobicEntity {
     private Long id;
     private String name;
     private Long numberOfRepetitions;
+
+    @ManyToMany(mappedBy = "anaerobics")
+    private List<UserEntity> users;
 
     public AnaerobicEntity() {
     }
@@ -36,5 +40,9 @@ public class AnaerobicEntity {
 
     public void setNumberOfRepetitions(Long numberOfRepetitions) {
         this.numberOfRepetitions = numberOfRepetitions;
+    }
+
+    public List<UserEntity> getUsers() {
+        return users;
     }
 }

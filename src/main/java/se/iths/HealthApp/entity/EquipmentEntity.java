@@ -1,9 +1,6 @@
 package se.iths.HealthApp.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class EquipmentEntity {
@@ -13,6 +10,9 @@ public class EquipmentEntity {
     private Long id;
     private String name;
     private Long price;
+
+    @ManyToOne
+    private UserEntity user;
 
     public EquipmentEntity() {
     }
@@ -39,5 +39,13 @@ public class EquipmentEntity {
 
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }

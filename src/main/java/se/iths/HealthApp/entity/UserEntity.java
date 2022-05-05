@@ -1,6 +1,7 @@
 package se.iths.HealthApp.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class UserEntity {
@@ -13,6 +14,20 @@ public class UserEntity {
     private String email;
     private Long phoneNumber;
 
+    @ManyToMany
+    private List<AerobicEntity> aerobics;
+
+    @ManyToMany
+    private List<AnaerobicEntity> anaerobics;
+
+    @OneToMany
+    private List<DietEntity> diets;
+
+    @OneToMany
+    private List<EquipmentEntity> equipments;
+
+    @OneToMany
+    private List<MindfulnessEntity> mindfulnessEntities;
 
     public UserEntity() {
     }
@@ -55,5 +70,45 @@ public class UserEntity {
 
     public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<AerobicEntity> getAerobics() {
+        return aerobics;
+    }
+
+    public void setAerobics(List<AerobicEntity> aerobics) {
+        this.aerobics = aerobics;
+    }
+
+    public List<AnaerobicEntity> getAnaerobics() {
+        return anaerobics;
+    }
+
+    public void setAnaerobics(List<AnaerobicEntity> anaerobics) {
+        this.anaerobics = anaerobics;
+    }
+
+    public List<DietEntity> getDiets() {
+        return diets;
+    }
+
+    public void setDiets(List<DietEntity> diets) {
+        this.diets = diets;
+    }
+
+    public List<EquipmentEntity> getEquipments() {
+        return equipments;
+    }
+
+    public void setEquipments(List<EquipmentEntity> equipments) {
+        this.equipments = equipments;
+    }
+
+    public List<MindfulnessEntity> getMindfulnessEntities() {
+        return mindfulnessEntities;
+    }
+
+    public void setMindfulnessEntities(List<MindfulnessEntity> mindfulnessEntities) {
+        this.mindfulnessEntities = mindfulnessEntities;
     }
 }
