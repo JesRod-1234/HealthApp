@@ -1,8 +1,8 @@
-package se.iths.Repository;
+package se.iths.HealthApp.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import se.iths.Entity.DietEntity;
+import se.iths.HealthApp.entity.DietEntity;
 
 @Repository
 public interface DietRepository extends CrudRepository<DietEntity, Long> {

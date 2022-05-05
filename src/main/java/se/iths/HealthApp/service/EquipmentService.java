@@ -1,8 +1,8 @@
-package se.iths.Service;
+package se.iths.HealthApp.service;
 
 import org.springframework.stereotype.Service;
-import se.iths.Entity.EquipmentEntity;
-import se.iths.Repository.EquipmentRepository;
+import se.iths.HealthApp.entity.EquipmentEntity;
+import se.iths.HealthApp.repository.EquipmentRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;

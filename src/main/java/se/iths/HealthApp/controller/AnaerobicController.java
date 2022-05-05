@@ -1,10 +1,10 @@
-package se.iths.Controller;
+package se.iths.HealthApp.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se.iths.Entity.AnaerobicEntity;
-import se.iths.Service.AnaerobicService;
+import se.iths.HealthApp.entity.AnaerobicEntity;
+import se.iths.HealthApp.service.AnaerobicService;
 
 import java.util.Optional;
 
@@ -18,10 +18,10 @@ public class AnaerobicController {
         this.anaerobicService = anaerobicService;
     }
 
-    @PostMapping
-    public ResponseEntity<AnaerobicEntity> createAnaerobicItem(@RequestBody AnaerobicEntity anaerobic) {
-        AnaerobicEntity createdAnaerobic = anaerobicService.createAnaerobicItem(anaerobic);
-        return new ResponseEntity<>(createdAnaerobic, HttpStatus.CREATED);
+    @GetMapping
+    public ResponseEntity<Iterable<AnaerobicEntity>> findAllAnaerobicItems() {
+        Iterable<AnaerobicEntity> allAnaerobicItems = anaerobicService.findAllAnaerobicItems();
+        return new ResponseEntity<>(allAnaerobicItems, HttpStatus.OK);
     }
 
     @GetMapping("{id}")
@@ -30,15 +30,15 @@ public class AnaerobicController {
         return new ResponseEntity<>(foundAnaerobicItem, HttpStatus.OK);
     }
 
+    @PostMapping
+    public ResponseEntity<AnaerobicEntity> createAnaerobicItem(@RequestBody AnaerobicEntity anaerobic) {
+        AnaerobicEntity createdAnaerobic = anaerobicService.createAnaerobicItem(anaerobic);
+        return new ResponseEntity<>(createdAnaerobic, HttpStatus.CREATED);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteAnaerobicItem(@PathVariable Long id) {
         anaerobicService.deleteAnaerobicItem(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    @GetMapping
-    public ResponseEntity<Iterable<AnaerobicEntity>> findAllAnaerobicItems() {
-        Iterable<AnaerobicEntity> allAnaerobicItems = anaerobicService.findAllAnaerobicItems();
-        return new ResponseEntity<>(allAnaerobicItems, HttpStatus.OK);
     }
 }

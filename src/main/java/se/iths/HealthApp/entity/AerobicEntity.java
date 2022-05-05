@@ -1,7 +1,6 @@
-package se.iths.Entity;
+package se.iths.HealthApp.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class AerobicEntity {
@@ -10,9 +9,6 @@ public class AerobicEntity {
     private Long id;
     private String name;
     private Long duration;
-
-    @ManyToMany(mappedBy = "userEntity")
-    private List<UserEntity> userEntity;
 
     public AerobicEntity() {
     }
@@ -39,13 +35,5 @@ public class AerobicEntity {
 
     public void setDuration(Long duration) {
         this.duration = duration;
-    }
-
-    public List<UserEntity> getUserEntity() {
-        return userEntity;
-    }
-
-    public void setUserEntity(List<UserEntity> userEntity) {
-        this.userEntity = userEntity;
     }
 }

@@ -1,4 +1,4 @@
-package se.iths.Entity;
+package se.iths.HealthApp.entity;
 
 import javax.persistence.*;
 
@@ -10,9 +10,6 @@ public class DietEntity {
     private String nameOfDish;
     private Long numberOfCalories;
     private String mealTimes;
-
-    @ManyToOne
-    private UserEntity userEntities;
 
     public DietEntity() {
     }
@@ -47,13 +44,5 @@ public class DietEntity {
 
     public void setMealTimes(String mealTimes) {
         this.mealTimes = mealTimes;
-    }
-
-    public UserEntity getUserEntities() {
-        return userEntities;
-    }
-
-    public void setUserEntities(UserEntity userEntities) {
-        this.userEntities = userEntities;
     }
 }
