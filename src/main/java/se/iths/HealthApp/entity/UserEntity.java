@@ -32,6 +32,28 @@ public class UserEntity {
     public UserEntity() {
     }
 
+    public void addAerobic(AerobicEntity aerobic) {
+        aerobics.add(aerobic);
+        aerobic.addUser(this);
+    }
+
+    public void addAnaerobic(AnaerobicEntity anaerobic) {
+        anaerobics.add(anaerobic);
+        anaerobic.addUser(this);
+    }
+
+    public void addDiet(DietEntity diet) {
+        diets.add(diet);
+    }
+
+    public void addEquipment(EquipmentEntity equipment) {
+        equipments.add(equipment);
+    }
+
+    public void addMindfulness(MindfulnessEntity item) {
+        mindfulnessEntities.add(item);
+    }
+
     public Long getId() {
         return id;
     }

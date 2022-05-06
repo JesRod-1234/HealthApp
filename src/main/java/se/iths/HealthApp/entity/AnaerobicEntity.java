@@ -18,6 +18,10 @@ public class AnaerobicEntity {
     public AnaerobicEntity() {
     }
 
+    public void addUser(UserEntity user) {
+        users.add(user);
+    }
+
     public Long getId() {
         return id;
     }

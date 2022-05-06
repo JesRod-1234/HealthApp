@@ -17,6 +17,10 @@ public class AerobicEntity {
     public AerobicEntity() {
     }
 
+    public void addUser(UserEntity user) {
+        users.add(user);
+    }
+
     public Long getId() {
         return id;
     }
@@ -44,4 +48,5 @@ public class AerobicEntity {
     public List<UserEntity> getUsers() {
         return users;
     }
+
 }
