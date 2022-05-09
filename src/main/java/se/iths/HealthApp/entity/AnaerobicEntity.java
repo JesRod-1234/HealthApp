@@ -45,8 +45,4 @@ public class AnaerobicEntity {
     public void setNumberOfRepetitions(Long numberOfRepetitions) {
         this.numberOfRepetitions = numberOfRepetitions;
     }
-
-    public List<UserEntity> getUsers() {
-        return users;
-    }
 }
