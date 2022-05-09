@@ -1,10 +1,8 @@
 package se.iths.HealthApp.controller;
 
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se.iths.HealthApp.entity.AerobicEntity;
 import se.iths.HealthApp.entity.UserEntity;
 import se.iths.HealthApp.service.AerobicService;
 import se.iths.HealthApp.service.UserService;
@@ -16,11 +14,9 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
-    private final AerobicService aerobicService;
 
-    public UserController(UserService userService, AerobicService aerobicService) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.aerobicService = aerobicService;
     }
 
     @GetMapping
@@ -41,27 +37,16 @@ public class UserController {
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
-    @PutMapping("{userId}/{aerobicId}")
+    @PutMapping("{userId}/aerobic/{aerobicId}")
     public ResponseEntity<UserEntity> addAerobicToUser(@PathVariable("userId") Long userId, @PathVariable("aerobicId") Long aerobicId) {
+        UserEntity updatedUser = userService.updateUser(aerobicId, userId);
+        return new ResponseEntity<>(updatedUser, HttpStatus.CREATED);
+    }
 
-        Optional<UserEntity> foundUserOp = userService.findUserById(userId);
-        Optional<AerobicEntity> foundAerobicOp = aerobicService.findAerobicItemById(aerobicId);
-
-        UserEntity userToUpdate = new UserEntity();
-        AerobicEntity foundAerobic = new AerobicEntity();
-
-        if (foundUserOp.isPresent()){
-            userToUpdate = foundUserOp.get();
-        }
-
-        if (foundAerobicOp.isPresent()){
-            userToUpdate.addAerobic(foundAerobic);
-            foundAerobic.addUser(userToUpdate);
-        }
-
-        //userService.createUser(userToUpdate);
-
-        return new ResponseEntity<>(userToUpdate, HttpStatus.CREATED);
+    @PutMapping("{userId}/anaerobic/{anaerobicId}")
+    public ResponseEntity<UserEntity> addAnaerobicToUser(@PathVariable("userId") Long userId, @PathVariable("anaerobicId") Long anaerobicId) {
+        UserEntity updatedUser = userService.updateUser(anaerobicId, userId);
+        return new ResponseEntity<>(updatedUser, HttpStatus.CREATED);
     }
 
     @DeleteMapping("{id}")

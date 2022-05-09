@@ -1,7 +1,9 @@
 package se.iths.HealthApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class AerobicEntity {
@@ -11,14 +13,10 @@ public class AerobicEntity {
     private String name;
     private Long duration;
 
-    @ManyToMany (mappedBy = "aerobics")
-    private List<UserEntity> users;
+    @ManyToMany(mappedBy = "aerobics")
+    private Set<UserEntity> users;
 
     public AerobicEntity() {
-    }
-
-    public void addUser(UserEntity user) {
-        users.add(user);
     }
 
     public Long getId() {
@@ -45,8 +43,16 @@ public class AerobicEntity {
         this.duration = duration;
     }
 
-    public List<UserEntity> getUsers() {
+    @JsonIgnore
+    public Set<UserEntity> getUsers() {
         return users;
     }
 
+    public void setUsers(Set<UserEntity> users) {
+        this.users = users;
+    }
+
+    public void addUser(UserEntity user) {
+        users.add(user);
+    }
 }

@@ -2,6 +2,7 @@ package se.iths.HealthApp.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class UserEntity {
@@ -15,7 +16,7 @@ public class UserEntity {
     private Long phoneNumber;
 
     @ManyToMany
-    private List<AerobicEntity> aerobics;
+    private Set<AerobicEntity> aerobics;
 
     @ManyToMany
     private List<AnaerobicEntity> anaerobics;
@@ -94,11 +95,11 @@ public class UserEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<AerobicEntity> getAerobics() {
+    public Set<AerobicEntity> getAerobics() {
         return aerobics;
     }
 
-    public void setAerobics(List<AerobicEntity> aerobics) {
+    public void setAerobics(Set<AerobicEntity> aerobics) {
         this.aerobics = aerobics;
     }
 
