@@ -1,6 +1,7 @@
 package se.iths.HealthApp.sender;
 
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import se.iths.HealthApp.config.JmsConfig;
 import se.iths.HealthApp.model.MessageObject;
@@ -12,11 +13,12 @@ import java.util.UUID;
 public class Sender {
 
 //    private final JmsTemplate jmsTemplate;
-
+//
 //    public Sender(JmsTemplate jmsTemplate) {
 //        this.jmsTemplate = jmsTemplate;
 //    }
 
+//    @Scheduled()
 //    public void sendMessage() {
 //        System.out.println("A new user has been saved! >>> (SOUT CODE)");
 //        MessageObject messageObject = new MessageObject(UUID.randomUUID(), "A new user has been saved! (THE ACTUAL MESSAGE)", LocalDateTime.now());
