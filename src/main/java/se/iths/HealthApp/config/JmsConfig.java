@@ -34,6 +34,5 @@ public class JmsConfig {
         converter.setObjectMapper(objectMapper);
 
         return converter;
-
     }
 }

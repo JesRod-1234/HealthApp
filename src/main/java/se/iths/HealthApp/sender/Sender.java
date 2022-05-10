@@ -12,18 +12,17 @@ import java.util.UUID;
 @Component
 public class Sender {
 
-//    private final JmsTemplate jmsTemplate;
-//
-//    public Sender(JmsTemplate jmsTemplate) {
-//        this.jmsTemplate = jmsTemplate;
-//    }
+    private final JmsTemplate jmsTemplate;
 
-//    @Scheduled()
-//    public void sendMessage() {
-//        System.out.println("A new user has been saved! >>> (SOUT CODE)");
-//        MessageObject messageObject = new MessageObject(UUID.randomUUID(), "A new user has been saved! (THE ACTUAL MESSAGE)", LocalDateTime.now());
-//        jmsTemplate.convertAndSend(JmsConfig.MESSAGE_QUEUE, messageObject);
-//
-//        System.out.println("Message sent!");
-//    }
+    public Sender(JmsTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
+    }
+
+    public void sendMessage() {
+        System.out.println("A new user has been saved! >>> (SOUT CODE)");
+        MessageObject messageObject = new MessageObject(UUID.randomUUID(), "A new user has been saved! (THE ACTUAL MESSAGE)", LocalDateTime.now());
+        jmsTemplate.convertAndSend(JmsConfig.MESSAGE_QUEUE, messageObject);
+
+        System.out.println("Message sent!");
+    }
 }

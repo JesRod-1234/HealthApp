@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.iths.HealthApp.entity.UserEntity;
+import se.iths.HealthApp.sender.Sender;
 import se.iths.HealthApp.service.UserService;
 
 import java.util.Optional;
@@ -13,9 +14,11 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private final Sender sender;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, Sender sender) {
         this.userService = userService;
+        this.sender = sender;
     }
 
     @GetMapping
@@ -33,6 +36,9 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
         UserEntity createdUser = userService.createUser(user);
+
+        sender.sendMessage();
+
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 

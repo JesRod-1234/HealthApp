@@ -3,6 +3,7 @@ package se.iths.HealthApp.service;
 import org.springframework.stereotype.Service;
 import se.iths.HealthApp.entity.*;
 import se.iths.HealthApp.repository.*;
+import se.iths.HealthApp.sender.Sender;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
