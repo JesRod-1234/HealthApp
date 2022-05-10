@@ -1,7 +1,11 @@
 package se.iths.HealthApp.entity;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class UserEntity {
@@ -13,6 +17,19 @@ public class UserEntity {
     private String lastname;
     private String email;
     private Long phoneNumber;
+    private String password;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<RoleEntity> roles = new HashSet<>();
+
+    public void addRole(RoleEntity role){
+        roles.add(role);
+        role.getUsers().add(this);
+    }
+
+    public void removeRole(RoleEntity role){
+        roles.remove(role);
+        role.getUsers().remove(this);
+    }
 
     @ManyToMany
     private List<AerobicEntity> aerobics;
@@ -30,6 +47,14 @@ public class UserEntity {
     private List<MindfulnessEntity> mindfulnessEntities;
 
     public UserEntity() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getId() {
@@ -110,5 +135,13 @@ public class UserEntity {
 
     public void setMindfulnessEntities(List<MindfulnessEntity> mindfulnessEntities) {
         this.mindfulnessEntities = mindfulnessEntities;
+    }
+
+    public Set<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
     }
 }

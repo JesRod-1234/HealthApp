@@ -1,6 +1,7 @@
 package se.iths.HealthApp.service;
 
 import org.springframework.stereotype.Service;
+import se.iths.HealthApp.Exception.NoSuchIDException;
 import se.iths.HealthApp.entity.AnaerobicEntity;
 import se.iths.HealthApp.repository.AnaerobicRepository;
 
@@ -21,11 +22,11 @@ public class AnaerobicService {
     }
 
     public Optional<AnaerobicEntity> findAnaerobicItemById(Long id) {
-        return Optional.ofNullable(anaerobicRepository.findById(id).orElseThrow(EntityNotFoundException::new));
+        return Optional.ofNullable(anaerobicRepository.findById(id).orElseThrow(() -> new NoSuchIDException("No such Id!")));
     }
 
     public void deleteAnaerobicItem(Long id) {
-        AnaerobicEntity foundItem = anaerobicRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        AnaerobicEntity foundItem = anaerobicRepository.findById(id).orElseThrow(() -> new NoSuchIDException("No such Id!"));
         anaerobicRepository.deleteById(foundItem.getId());
     }
 

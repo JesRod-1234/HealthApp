@@ -1,6 +1,7 @@
 package se.iths.HealthApp.service;
 
 import org.springframework.stereotype.Service;
+import se.iths.HealthApp.Exception.NoSuchIDException;
 import se.iths.HealthApp.entity.MindfulnessEntity;
 import se.iths.HealthApp.repository.MindfulnessRepository;
 
@@ -21,11 +22,11 @@ public class MindfulnessService {
     }
 
     public Optional<MindfulnessEntity> findMindfulnessById(Long id) {
-        return Optional.ofNullable(mindfulnessRepository.findById(id).orElseThrow(EntityNotFoundException::new));
+        return Optional.ofNullable(mindfulnessRepository.findById(id).orElseThrow(() -> new NoSuchIDException("No such Id!")));
     }
 
     public void deleteMindfulness(Long id) {
-        MindfulnessEntity foundMindfulness = mindfulnessRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        MindfulnessEntity foundMindfulness = mindfulnessRepository.findById(id).orElseThrow(() -> new NoSuchIDException("No such Id!"));
         mindfulnessRepository.deleteById(foundMindfulness.getId());
     }
 

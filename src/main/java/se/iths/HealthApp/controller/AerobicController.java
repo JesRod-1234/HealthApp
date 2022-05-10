@@ -26,6 +26,7 @@ public class AerobicController {
 
     @GetMapping("{id}")
     public ResponseEntity<Optional<AerobicEntity>> findAerobicItemById(@PathVariable Long id) {
+
         Optional<AerobicEntity> foundAerobicItem = aerobicService.findAerobicItemById(id);
         return new ResponseEntity<>(foundAerobicItem, HttpStatus.OK);
     }
@@ -38,6 +39,7 @@ public class AerobicController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteAerobicItem(@PathVariable Long id) {
+
         aerobicService.deleteAerobicItem(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
