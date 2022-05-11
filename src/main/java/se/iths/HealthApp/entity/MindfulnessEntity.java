@@ -1,6 +1,8 @@
 package se.iths.HealthApp.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class MindfulnessEntity {

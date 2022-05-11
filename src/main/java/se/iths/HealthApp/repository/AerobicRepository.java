@@ -6,6 +6,8 @@ import se.iths.HealthApp.entity.AerobicEntity;
 import java.util.Date;
 import java.util.List;
 
+import java.util.List;
+
 @Repository
 public interface AerobicRepository extends CrudRepository<AerobicEntity, Long> {
 
