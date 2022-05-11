@@ -2,7 +2,6 @@ package se.iths.HealthApp.entity;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class UserEntity {
@@ -14,9 +13,22 @@ public class UserEntity {
     private String lastname;
     private String email;
     private Long phoneNumber;
+    private String password;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<RoleEntity> roles = new HashSet<>();
+
+    public void addRole(RoleEntity role){
+        roles.add(role);
+        role.getUsers().add(this);
+    }
+
+    public void removeRole(RoleEntity role){
+        roles.remove(role);
+        role.getUsers().remove(this);
+    }
 
     @ManyToMany
-    private Set<AerobicEntity> aerobics;
+    private List<AerobicEntity> aerobics;
 
     @ManyToMany
     private List<AnaerobicEntity> anaerobics;
@@ -31,6 +43,14 @@ public class UserEntity {
     private List<MindfulnessEntity> mindfulnessEntities;
 
     public UserEntity() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void addAerobic(AerobicEntity aerobic) {
@@ -95,11 +115,11 @@ public class UserEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<AerobicEntity> getAerobics() {
+    public List<AerobicEntity> getAerobics() {
         return aerobics;
     }
 
-    public void setAerobics(Set<AerobicEntity> aerobics) {
+    public void setAerobics(List<AerobicEntity> aerobics) {
         this.aerobics = aerobics;
     }
 
@@ -133,5 +153,13 @@ public class UserEntity {
 
     public void setMindfulnessEntities(List<MindfulnessEntity> mindfulnessEntities) {
         this.mindfulnessEntities = mindfulnessEntities;
+    }
+
+    public Set<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
     }
 }

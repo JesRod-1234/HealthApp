@@ -2,11 +2,12 @@ package se.iths.HealthApp.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import se.iths.HealthApp.entity.UserEntity;
+import se.iths.HealthApp.entity.RoleEntity;
 
 @Repository
-public interface UserRepository extends CrudRepository<UserEntity, Long> {
+public interface RoleRepository extends CrudRepository<RoleEntity, Long> {
 
-    UserEntity findByEmail(String email);
+    RoleEntity findByName(String name);
+
 
 }

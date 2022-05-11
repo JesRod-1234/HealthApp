@@ -1,6 +1,12 @@
 package se.iths.HealthApp.service;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import se.iths.HealthApp.Exception.NoSuchIDException;
+import se.iths.HealthApp.entity.RoleEntity;
+import se.iths.HealthApp.entity.UserEntity;
+import se.iths.HealthApp.repository.RoleRepository;
+import se.iths.HealthApp.repository.UserRepository;
 import se.iths.HealthApp.entity.*;
 import se.iths.HealthApp.repository.*;
 import se.iths.HealthApp.sender.Sender;
@@ -12,6 +18,8 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private BCryptPasswordEncoder passwordEncoder;
     private final AerobicRepository aerobicRepository;
     private final AnaerobicRepository anaerobicRepository;
     private final DietRepository dietRepository;
@@ -19,15 +27,21 @@ public class UserService {
     private final MindfulnessRepository mindfulnessRepository;
 
     public UserService(UserRepository userRepository, AerobicRepository aerobicRepository, AnaerobicRepository anaerobicRepository, DietRepository dietRepository, EquipmentRepository equipmentRepository, MindfulnessRepository mindfulnessRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.aerobicRepository = aerobicRepository;
         this.anaerobicRepository = anaerobicRepository;
         this.dietRepository = dietRepository;
         this.equipmentRepository = equipmentRepository;
         this.mindfulnessRepository = mindfulnessRepository;
+       this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UserEntity createUser(UserEntity user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        RoleEntity roleToAdd = roleRepository.findByName("ROLE_USER");
+        user.addRole(roleToAdd);
         return userRepository.save(user);
     }
 
@@ -83,6 +97,4 @@ public class UserService {
     public Iterable<UserEntity> findAllUsers() {
         return userRepository.findAll();
     }
-
-
 }
