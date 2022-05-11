@@ -3,6 +3,7 @@ package se.iths.HealthApp.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -12,6 +13,7 @@ public class AerobicEntity {
     private Long id;
     private String name;
     private Long duration;
+    private Date dateCreated;
 
     @ManyToMany(mappedBy = "aerobics")
     private Set<UserEntity> users;

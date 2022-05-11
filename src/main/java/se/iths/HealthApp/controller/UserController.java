@@ -8,7 +8,6 @@ import se.iths.HealthApp.entity.UserEntity;
 import se.iths.HealthApp.sender.Sender;
 import se.iths.HealthApp.service.UserService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,6 +89,12 @@ public class UserController {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("checkhealth/{id}")
+    public ResponseEntity<String> checkHealth(@PathVariable Long id) {
+
+        String message = userService.checkHealth(id);
+
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
 }
-
-

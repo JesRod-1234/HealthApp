@@ -10,6 +10,10 @@ import se.iths.HealthApp.entity.*;
 import se.iths.HealthApp.repository.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -93,5 +97,20 @@ public class UserService {
 
     public Iterable<UserEntity> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    public String checkHealth(Long id) {
+
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
+        Date sevenDaysBefore = Date.from(LocalDate.now().minusDays(7).atStartOfDay(defaultZoneId).toInstant());
+
+        List<AerobicEntity> last7DaysExercises = aerobicRepository.findAllByDateCreatedBetweenAndId(sevenDaysBefore, today, id);
+
+        if (last7DaysExercises.size() < 5) {
+            return "You are not exercising, enough, you'll be fat";
+        } else {
+            return "bra jobbat!";
+        }
     }
 }
