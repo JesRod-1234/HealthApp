@@ -5,6 +5,7 @@ import se.iths.HealthApp.entity.*;
 import se.iths.HealthApp.repository.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -82,6 +83,8 @@ public class UserService {
     public Iterable<UserEntity> findAllUsers() {
         return userRepository.findAll();
     }
+
+
 
 
 }

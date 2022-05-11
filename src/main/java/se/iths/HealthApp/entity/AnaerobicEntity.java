@@ -1,6 +1,7 @@
 package se.iths.HealthApp.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity

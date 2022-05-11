@@ -14,6 +14,8 @@ public class UserEntity {
     private String lastname;
     private String email;
     private Long phoneNumber;
+    private Long healthCheck;
+
 
     @ManyToMany
     private Set<AerobicEntity> aerobics;
