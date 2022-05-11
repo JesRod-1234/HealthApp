@@ -2,14 +2,12 @@ package se.iths.HealthApp.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import se.iths.HealthApp.Exception.NoSuchIDException;
 import se.iths.HealthApp.entity.RoleEntity;
 import se.iths.HealthApp.entity.UserEntity;
 import se.iths.HealthApp.repository.RoleRepository;
 import se.iths.HealthApp.repository.UserRepository;
 import se.iths.HealthApp.entity.*;
 import se.iths.HealthApp.repository.*;
-import se.iths.HealthApp.sender.Sender;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
@@ -26,15 +24,14 @@ public class UserService {
     private final EquipmentRepository equipmentRepository;
     private final MindfulnessRepository mindfulnessRepository;
 
-    public UserService(UserRepository userRepository, AerobicRepository aerobicRepository, AnaerobicRepository anaerobicRepository, DietRepository dietRepository, EquipmentRepository equipmentRepository, MindfulnessRepository mindfulnessRepository) {
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, AerobicRepository aerobicRepository, AnaerobicRepository anaerobicRepository, DietRepository dietRepository, EquipmentRepository equipmentRepository, MindfulnessRepository mindfulnessRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.aerobicRepository = aerobicRepository;
         this.anaerobicRepository = anaerobicRepository;
         this.dietRepository = dietRepository;
         this.equipmentRepository = equipmentRepository;
         this.mindfulnessRepository = mindfulnessRepository;
-       this.roleRepository = roleRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 

@@ -13,7 +13,7 @@ public class ApiError {
     private String message;
     private String debugMessage;
 
-    private ApiError(){
+    private ApiError() {
         timeStamp = LocalDateTime.now();
     }
 

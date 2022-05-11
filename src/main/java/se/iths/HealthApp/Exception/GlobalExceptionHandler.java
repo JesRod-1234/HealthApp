@@ -17,29 +17,29 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     private final Logger logger = LoggerFactory.getLogger((this.getClass()));
 
-    private ResponseEntity<Object> buildResponseEntity(ApiError apiError){
+    private ResponseEntity<Object> buildResponseEntity(ApiError apiError) {
         return new ResponseEntity<>(apiError, apiError.getHttpStatus());
     }
 
     //EmptyException
 
     @ExceptionHandler({EmailAlreadyExist.class})
-    public ResponseEntity<Object> emailAlreadyExist(EmailAlreadyExist e){
+    public ResponseEntity<Object> emailAlreadyExist(EmailAlreadyExist e) {
         logger.info(e.getClass().getName());
 //        String errorMessage = "Email already exist!";
         return buildResponseEntity(new ApiError(HttpStatus.CONFLICT, e.getMessage(), e));
     }
 
     @ExceptionHandler({NoSuchIDException.class})
-    public ResponseEntity<Object> noSuchIdException(NoSuchIDException e){
+    public ResponseEntity<Object> noSuchIdException(NoSuchIDException e) {
         logger.info(e.getClass().getName());
 //        String errorMessage = "No such Id";
-        return buildResponseEntity(new ApiError(HttpStatus.NO_CONTENT, e.getMessage(),e));
+        return buildResponseEntity(new ApiError(HttpStatus.NO_CONTENT, e.getMessage(), e));
     }
 
 
     @ExceptionHandler({EmptyException.class})
-    public ResponseEntity<Object> entityException(EmptyException e){
+    public ResponseEntity<Object> entityException(EmptyException e) {
         logger.info(e.getClass().getName());
 //        String errorMessage = "";
         return buildResponseEntity(new ApiError(HttpStatus.CONFLICT, e.getMessage(), e));
@@ -48,23 +48,20 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     //Base Exception
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(
-            HttpMessageNotReadableException e, HttpHeaders headers, HttpStatus status, WebRequest request){
-    logger.info(e.getClass().getName());
-    String errorMessage = " Malformed JSON request";
+            HttpMessageNotReadableException e, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        logger.info(e.getClass().getName());
+        String errorMessage = " Malformed JSON request";
         return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, errorMessage, e));
     }
 
 
     // All Exceptions
     @ExceptionHandler({Exception.class})
-    public ResponseEntity<Object> handleAllException(Exception e){
+    public ResponseEntity<Object> handleAllException(Exception e) {
         logger.info(e.getClass().getName());
-        logger.error("Error: ",e);
+        logger.error("Error: ", e);
         String errorMessage = " An unexcpected error occured";
 
-        return buildResponseEntity( new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, errorMessage, e));
+        return buildResponseEntity(new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, errorMessage, e));
     }
-
-
-
 }

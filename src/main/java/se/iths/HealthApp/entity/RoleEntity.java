@@ -15,11 +15,12 @@ public class RoleEntity {
     @ManyToMany(mappedBy = "roles")
     private Set<UserEntity> users;
 
-    public RoleEntity (String name){
+    public RoleEntity(String name) {
         this.name = name;
     }
 
-    public RoleEntity() {}
+    public RoleEntity() {
+    }
 
     public Long getId() {
         return id;
@@ -45,6 +46,4 @@ public class RoleEntity {
     public void setUsers(Set<UserEntity> users) {
         this.users = users;
     }
-
-
 }

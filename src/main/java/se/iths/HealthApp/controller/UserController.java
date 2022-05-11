@@ -4,13 +4,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.iths.HealthApp.Exception.EmailAlreadyExist;
-import se.iths.HealthApp.Exception.NoSuchIDException;
 import se.iths.HealthApp.entity.UserEntity;
 import se.iths.HealthApp.sender.Sender;
 import se.iths.HealthApp.service.UserService;
 
-import javax.validation.constraints.Email;
-import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +40,7 @@ public class UserController {
     @PostMapping("signup")
     public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
 
-        List<UserEntity> allUsers = new ArrayList<>();
+        List<UserEntity> allUsers;
         allUsers = (List<UserEntity>) userService.findAllUsers();
 
         for (UserEntity user1 : allUsers) {
@@ -56,7 +53,6 @@ public class UserController {
         sender.sendMessage();
 
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
-
     }
 
     @PutMapping("{userId}/aerobic/{aerobicId}")
@@ -93,8 +89,7 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-
     }
+}
 
 

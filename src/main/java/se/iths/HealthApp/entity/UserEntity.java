@@ -1,7 +1,9 @@
 package se.iths.HealthApp.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class UserEntity {
@@ -17,12 +19,12 @@ public class UserEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<RoleEntity> roles = new HashSet<>();
 
-    public void addRole(RoleEntity role){
+    public void addRole(RoleEntity role) {
         roles.add(role);
         role.getUsers().add(this);
     }
 
-    public void removeRole(RoleEntity role){
+    public void removeRole(RoleEntity role) {
         roles.remove(role);
         role.getUsers().remove(this);
     }
