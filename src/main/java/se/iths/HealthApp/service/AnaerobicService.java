@@ -5,7 +5,6 @@ import se.iths.HealthApp.Exception.NoSuchIDException;
 import se.iths.HealthApp.entity.AnaerobicEntity;
 import se.iths.HealthApp.repository.AnaerobicRepository;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service

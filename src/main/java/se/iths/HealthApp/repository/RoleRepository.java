@@ -6,8 +6,5 @@ import se.iths.HealthApp.entity.RoleEntity;
 
 @Repository
 public interface RoleRepository extends CrudRepository<RoleEntity, Long> {
-
     RoleEntity findByName(String name);
-
-
 }

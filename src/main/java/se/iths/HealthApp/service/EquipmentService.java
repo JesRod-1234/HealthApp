@@ -5,7 +5,6 @@ import se.iths.HealthApp.Exception.NoSuchIDException;
 import se.iths.HealthApp.entity.EquipmentEntity;
 import se.iths.HealthApp.repository.EquipmentRepository;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service

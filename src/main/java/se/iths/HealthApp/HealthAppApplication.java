@@ -20,6 +20,6 @@ public class HealthAppApplication {
 //            roleRepository.save(new RoleEntity("ROLE_ADMIN"));
 //            roleRepository.save(new RoleEntity("ROLE_USER"));
 //        };
-    }
+}
 
 

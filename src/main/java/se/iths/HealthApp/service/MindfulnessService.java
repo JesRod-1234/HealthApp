@@ -5,7 +5,6 @@ import se.iths.HealthApp.Exception.NoSuchIDException;
 import se.iths.HealthApp.entity.MindfulnessEntity;
 import se.iths.HealthApp.repository.MindfulnessRepository;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service

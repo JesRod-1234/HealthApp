@@ -8,17 +8,17 @@ import se.iths.HealthApp.Exception.EmptyException;
 public class AuthController {
 
     @GetMapping
-    public String homepage(){
+    public String homepage() {
         throw new EmptyException("NAAAEEJ");
     }
 
     @GetMapping("userportal")
-    public String userPortal () {
+    public String userPortal() {
         return "Welcome, you are now authenticated";
     }
 
     @GetMapping("adminportal")
-    public String adminPortal () {
+    public String adminPortal() {
         return "Welcome admin!";
     }
 }

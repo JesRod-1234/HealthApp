@@ -14,7 +14,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -114,6 +113,4 @@ public class UserService {
             return "bra jobbat!";
         }
     }
-
-
 }
