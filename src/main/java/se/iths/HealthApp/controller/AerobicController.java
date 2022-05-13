@@ -3,9 +3,12 @@ package se.iths.HealthApp.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import se.iths.HealthApp.Exception.EmailAlreadyExist;
 import se.iths.HealthApp.entity.AerobicEntity;
+import se.iths.HealthApp.entity.UserEntity;
 import se.iths.HealthApp.service.AerobicService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -33,6 +36,15 @@ public class AerobicController {
 
     @PostMapping
     public ResponseEntity<AerobicEntity> createAerobicItem(@RequestBody AerobicEntity aerobic) {
+
+        List<AerobicEntity> allAerobic;
+        allAerobic = (List<AerobicEntity>) aerobicService.findAllAerobicItems();
+
+        for (AerobicEntity aerobic1 : allAerobic) {
+            if (aerobic1.getName().equals(aerobic.getName())) {
+                throw new EmailAlreadyExist("Name already exist!");
+            }
+        }
         AerobicEntity createdAerobic = aerobicService.createAerobicItem(aerobic);
         return new ResponseEntity<>(createdAerobic, HttpStatus.CREATED);
     }

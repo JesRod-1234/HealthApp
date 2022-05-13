@@ -21,7 +21,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(apiError, apiError.getHttpStatus());
     }
 
-    //EmptyException
+    //NameAlreadyExists
 
     @ExceptionHandler({EmailAlreadyExist.class})
     public ResponseEntity<Object> emailAlreadyExist(EmailAlreadyExist e) {
@@ -38,8 +38,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
-    @ExceptionHandler({EmptyException.class})
-    public ResponseEntity<Object> entityException(EmptyException e) {
+    @ExceptionHandler({NameAlreadyExists.class})
+    public ResponseEntity<Object> nameAlreadyExists(NameAlreadyExists e) {
         logger.info(e.getClass().getName());
 //        String errorMessage = "";
         return buildResponseEntity(new ApiError(HttpStatus.CONFLICT, e.getMessage(), e));
