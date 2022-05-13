@@ -2,7 +2,7 @@
 
 ### POST: Create new user
 
-`http://localhost:8080/users`
+`http://localhost:8080/users/signup`
 
 
 ```
@@ -10,7 +10,8 @@
   "firstname":"Tom",
   "lastname" : "Arnold",
   "email" : "tom@gmail",
-  "phoneNumber" : "22222222"	
+  "phoneNumber" : "22222222",
+  "password": "xxxx"	
 }
 ```
 ### GET: Get all users
@@ -44,6 +45,10 @@
 ### PUT: Add Equipment to users
 
 `http://localhost:8080/users/userid`/equipment/equipmentid`
+
+### GET: Health Check
+
+`http://localhost:8080/users/userid`
 
 # Aerobics
 
@@ -118,7 +123,7 @@
 
 # Diet
 
-### POST: Create Diet 
+### POST: Create Diet
 
 `http://localhost:8080/diet`
 
