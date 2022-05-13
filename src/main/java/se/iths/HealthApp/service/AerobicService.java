@@ -5,11 +5,17 @@ import se.iths.HealthApp.Exception.NoSuchIDException;
 import se.iths.HealthApp.entity.AerobicEntity;
 import se.iths.HealthApp.repository.AerobicRepository;
 
-import javax.persistence.EntityNotFoundException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.Optional;
 
+@Transactional
 @Service
 public class AerobicService {
+
+    @PersistenceContext
+    EntityManager entityManager;
 
     private final AerobicRepository aerobicRepository;
 

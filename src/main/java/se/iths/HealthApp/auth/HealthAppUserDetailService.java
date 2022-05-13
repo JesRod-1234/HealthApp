@@ -17,10 +17,10 @@ public class HealthAppUserDetailService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email)throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByEmail(email);
 
-        if(userEntity == null){
+        if (userEntity == null) {
             throw new UsernameNotFoundException("can't find user with email: " + email);
         }
         return new HealthAppPrincipal(userEntity);

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -13,12 +14,25 @@ public class AerobicEntity {
     private Long id;
     private String name;
     private Long duration;
-    private Date dateCreated;
+    private LocalDate createdAt;
 
     @ManyToMany(mappedBy = "aerobics")
     private Set<UserEntity> users;
 
+    @PrePersist
+    public void getCurrentDate() {
+        setCreatedAt(LocalDate.now());
+    }
+
     public AerobicEntity() {
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Long getId() {

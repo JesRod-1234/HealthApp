@@ -14,12 +14,14 @@ public class HealthAppApplication {
         SpringApplication.run(HealthAppApplication.class, args);
     }
 
-//    @Bean
-//    public CommandLineRunner setUpRoles(RoleRepository roleRepository) {
-//        return (args)-> {
-//            roleRepository.save(new RoleEntity("ROLE_ADMIN"));
-//            roleRepository.save(new RoleEntity("ROLE_USER"));
-//        };
+    @Bean
+    public CommandLineRunner setUpRoles(RoleRepository roleRepository) {
+        return (args) -> {
+            roleRepository.save(new RoleEntity("ROLE_ADMIN"));
+            roleRepository.save(new RoleEntity("ROLE_USER"));
+        };
     }
+}
+
 
 

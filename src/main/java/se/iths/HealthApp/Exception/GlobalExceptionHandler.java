@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -53,7 +52,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         String errorMessage = " Malformed JSON request";
         return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, errorMessage, e));
     }
-
 
     // All Exceptions
     @ExceptionHandler({Exception.class})

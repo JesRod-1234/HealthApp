@@ -11,8 +11,7 @@ import se.iths.HealthApp.repository.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -101,14 +100,22 @@ public class UserService {
 
     public String checkHealth(Long id) {
 
-        ZoneId defaultZoneId = ZoneId.systemDefault();
-        Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
-        Date sevenDaysBefore = Date.from(LocalDate.now().minusDays(7).atStartOfDay(defaultZoneId).toInstant());
+        UserEntity foundUser = userRepository.findById(id).orElse(new UserEntity());
 
-        List<AerobicEntity> last7DaysExercises = aerobicRepository.findAllByDateCreatedBetweenAndId(sevenDaysBefore, today, id);
+        LocalDate today = LocalDate.now();
+        LocalDate sevenDaysBefore = LocalDate.now().minusDays(7);
 
-        if (last7DaysExercises.size() < 5) {
-            return "You are not exercising, enough, you'll be fat";
+        List<AerobicEntity> last7DaysExercises = aerobicRepository.findAllByCreatedAtBetween(sevenDaysBefore, today);
+        List<AerobicEntity> exercisesOfOneUser = new ArrayList<>();
+
+        for (AerobicEntity exercise : last7DaysExercises) {
+            if (exercise.getUsers().contains(foundUser)) {
+                exercisesOfOneUser.add(exercise);
+            }
+        }
+
+        if (exercisesOfOneUser.size() < 5) {
+            return "You are not exercising, enough, you'll be fat    " + last7DaysExercises.size();
         } else {
             return "bra jobbat!";
         }
