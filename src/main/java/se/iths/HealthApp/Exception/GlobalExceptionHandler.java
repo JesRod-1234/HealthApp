@@ -25,14 +25,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({EmailAlreadyExist.class})
     public ResponseEntity<Object> emailAlreadyExist(EmailAlreadyExist e) {
         logger.info(e.getClass().getName());
-//        String errorMessage = "Email already exist!";
         return buildResponseEntity(new ApiError(HttpStatus.CONFLICT, e.getMessage(), e));
     }
 
     @ExceptionHandler({NoSuchIDException.class})
     public ResponseEntity<Object> noSuchIdException(NoSuchIDException e) {
         logger.info(e.getClass().getName());
-//        String errorMessage = "No such Id";
         return buildResponseEntity(new ApiError(HttpStatus.NO_CONTENT, e.getMessage(), e));
     }
 
@@ -40,7 +38,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({NameAlreadyExists.class})
     public ResponseEntity<Object> nameAlreadyExists(NameAlreadyExists e) {
         logger.info(e.getClass().getName());
-//        String errorMessage = "";
         return buildResponseEntity(new ApiError(HttpStatus.CONFLICT, e.getMessage(), e));
     }
 
