@@ -14,7 +14,6 @@ public class AerobicEntity {
     private Long id;
     private String name;
     private Long duration;
-    private Date dateCreated;
     private LocalDate createdAt;
 
     @ManyToMany(mappedBy = "aerobics")
