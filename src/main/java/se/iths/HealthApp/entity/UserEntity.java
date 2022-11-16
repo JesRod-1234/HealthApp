@@ -16,6 +16,7 @@ public class UserEntity {
     private String email;
     private Long phoneNumber;
     private String password;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<RoleEntity> roles = new HashSet<>();
 

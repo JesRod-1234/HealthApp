@@ -10,8 +10,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("diet")
-
+@CrossOrigin
 public class DietController {
+
     private final DietService dietService;
 
     public DietController(DietService dietService) {

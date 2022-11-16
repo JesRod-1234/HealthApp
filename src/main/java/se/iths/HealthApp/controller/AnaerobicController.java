@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("anaerobics")
+@CrossOrigin
 public class AnaerobicController {
 
     private final AnaerobicService anaerobicService;
