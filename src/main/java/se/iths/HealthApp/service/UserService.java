@@ -22,15 +22,15 @@ public class UserService {
     private final RoleRepository roleRepository;
     private BCryptPasswordEncoder passwordEncoder;
     private final AerobicRepository aerobicRepository;
-    private final AnaerobicRepository anaerobicRepository;
+    private final ResistanceTrainingRepository resistanceTrainingRepository;
     private final DietRepository dietRepository;
     private final EquipmentRepository equipmentRepository;
     private final MindfulnessRepository mindfulnessRepository;
 
-    public UserService(UserRepository userRepository, AerobicRepository aerobicRepository, AnaerobicRepository anaerobicRepository, DietRepository dietRepository, EquipmentRepository equipmentRepository, MindfulnessRepository mindfulnessRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, AerobicRepository aerobicRepository, ResistanceTrainingRepository resistanceTrainingRepository, DietRepository dietRepository, EquipmentRepository equipmentRepository, MindfulnessRepository mindfulnessRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.aerobicRepository = aerobicRepository;
-        this.anaerobicRepository = anaerobicRepository;
+        this.resistanceTrainingRepository = resistanceTrainingRepository;
         this.dietRepository = dietRepository;
         this.equipmentRepository = equipmentRepository;
         this.mindfulnessRepository = mindfulnessRepository;
@@ -54,10 +54,10 @@ public class UserService {
     }
 
     public UserEntity updateAnaerobicInUser(Long anaerobicId, Long userId) {
-        AnaerobicEntity foundAnaerobic = anaerobicRepository.findById(anaerobicId).orElse(new AnaerobicEntity());
+        ResistanceTrainingEntity foundAnaerobic = resistanceTrainingRepository.findById(anaerobicId).orElse(new ResistanceTrainingEntity());
         UserEntity userToUpdate = userRepository.findById(userId).orElse(new UserEntity());
 
-        userToUpdate.addAnaerobic(foundAnaerobic);
+        userToUpdate.addResistanceTrainings(foundAnaerobic);
         return userRepository.save(userToUpdate);
     }
 

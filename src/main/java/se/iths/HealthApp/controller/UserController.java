@@ -16,11 +16,11 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
-    private final Sender sender;
+    //private final Sender sender;
 
-    public UserController(UserService userService, Sender sender) {
+    public UserController(UserService userService/*, Sender sender*/) {
         this.userService = userService;
-        this.sender = sender;
+        //this.sender = sender;
     }
 
     @GetMapping
@@ -49,7 +49,7 @@ public class UserController {
         }
         UserEntity createdUser = userService.createUser(user);
 
-        sender.sendMessage();
+        //sender.sendMessage();
 
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }

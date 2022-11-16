@@ -1,21 +1,23 @@
 package se.iths.HealthApp.entity;
 
 import javax.persistence.*;
+
 import java.util.List;
 
 @Entity
-public class AnaerobicEntity {
+public class ResistanceTrainingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String muscleGroup;
     private Long numberOfRepetitions;
 
-    @ManyToMany(mappedBy = "anaerobics")
+    @ManyToMany(mappedBy = "resistanceTrainings")
     private List<UserEntity> users;
 
-    public AnaerobicEntity() {
+    public ResistanceTrainingEntity() {
     }
 
     public void addUser(UserEntity user) {
@@ -36,6 +38,14 @@ public class AnaerobicEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getMuscleGroup() {
+        return muscleGroup;
+    }
+
+    public void setMuscleGroup(String group) {
+        this.muscleGroup = group;
     }
 
     public Long getNumberOfRepetitions() {

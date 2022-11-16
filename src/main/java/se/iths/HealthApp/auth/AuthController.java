@@ -9,7 +9,7 @@ public class AuthController {
 
     @GetMapping
     public String homepage(){
-        throw new NameAlreadyExists("NAAAEEJ");
+        throw new NameAlreadyExists("Name Already Exista");
     }
 
     @GetMapping("userportal")
