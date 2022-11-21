@@ -37,14 +37,6 @@ public class AerobicController {
     @PostMapping
     public ResponseEntity<AerobicEntity> createAerobicItem(@RequestBody AerobicEntity aerobic) {
 
-        List<AerobicEntity> allAerobic;
-        allAerobic = (List<AerobicEntity>) aerobicService.findAllAerobicItems();
-
-        for (AerobicEntity aerobic1 : allAerobic) {
-            if (aerobic1.getName().equals(aerobic.getName())) {
-                throw new EmailAlreadyExist("Name already exist!");
-            }
-        }
         AerobicEntity createdAerobic = aerobicService.createAerobicItem(aerobic);
         return new ResponseEntity<>(createdAerobic, HttpStatus.CREATED);
     }

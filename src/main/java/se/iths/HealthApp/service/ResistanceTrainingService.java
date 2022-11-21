@@ -1,6 +1,7 @@
 package se.iths.HealthApp.service;
 
 import org.springframework.stereotype.Service;
+
 import se.iths.HealthApp.Exception.NoSuchIDException;
 import se.iths.HealthApp.entity.ResistanceTrainingEntity;
 import se.iths.HealthApp.repository.ResistanceTrainingRepository;
@@ -16,20 +17,20 @@ public class ResistanceTrainingService {
         this.resistanceTrainingRepository = resistanceTrainingRepository;
     }
 
-    public ResistanceTrainingEntity createAnaerobicItem(ResistanceTrainingEntity anaerobic) {
-        return resistanceTrainingRepository.save(anaerobic);
+    public ResistanceTrainingEntity createResistanceTrainingEntry(ResistanceTrainingEntity resistanceTrainingEntity) {
+        return resistanceTrainingRepository.save(resistanceTrainingEntity);
     }
 
-    public Optional<ResistanceTrainingEntity> findAnaerobicItemById(Long id) {
+    public Optional<ResistanceTrainingEntity> findResistanceTrainingEntryById(Long id) {
         return Optional.ofNullable(resistanceTrainingRepository.findById(id).orElseThrow(() -> new NoSuchIDException("No such Id!")));
     }
 
-    public void deleteAnaerobicItem(Long id) {
+    public void deleteResistanceTrainingEntry(Long id) {
         ResistanceTrainingEntity foundItem = resistanceTrainingRepository.findById(id).orElseThrow(() -> new NoSuchIDException("No such Id!"));
         resistanceTrainingRepository.deleteById(foundItem.getId());
     }
 
-    public Iterable<ResistanceTrainingEntity> findAllAnaerobicItems() {
+    public Iterable<ResistanceTrainingEntity> findAllResistanceTrainingEntries() {
         return resistanceTrainingRepository.findAll();
     }
 }

@@ -23,15 +23,15 @@ public class UserService {
     private BCryptPasswordEncoder passwordEncoder;
     private final AerobicRepository aerobicRepository;
     private final ResistanceTrainingRepository resistanceTrainingRepository;
-    private final DietRepository dietRepository;
+    private final NutritionRepository nutritionRepository;
     private final EquipmentRepository equipmentRepository;
     private final MindfulnessRepository mindfulnessRepository;
 
-    public UserService(UserRepository userRepository, AerobicRepository aerobicRepository, ResistanceTrainingRepository resistanceTrainingRepository, DietRepository dietRepository, EquipmentRepository equipmentRepository, MindfulnessRepository mindfulnessRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, AerobicRepository aerobicRepository, ResistanceTrainingRepository resistanceTrainingRepository, NutritionRepository nutritionRepository, EquipmentRepository equipmentRepository, MindfulnessRepository mindfulnessRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.aerobicRepository = aerobicRepository;
         this.resistanceTrainingRepository = resistanceTrainingRepository;
-        this.dietRepository = dietRepository;
+        this.nutritionRepository = nutritionRepository;
         this.equipmentRepository = equipmentRepository;
         this.mindfulnessRepository = mindfulnessRepository;
         this.roleRepository = roleRepository;
@@ -62,7 +62,7 @@ public class UserService {
     }
 
     public UserEntity updateDietInUser(Long dietId, Long userId) {
-        DietEntity foundDiet = dietRepository.findById(dietId).orElse(new DietEntity());
+        NutritionEntity foundDiet = nutritionRepository.findById(dietId).orElse(new NutritionEntity());
         UserEntity userToUpdate = userRepository.findById(userId).orElse(new UserEntity());
 
         userToUpdate.addDiet(foundDiet);

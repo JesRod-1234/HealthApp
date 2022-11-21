@@ -24,6 +24,7 @@ public class UserController {
     }
 
     @GetMapping
+    @CrossOrigin
     public ResponseEntity<Iterable<UserEntity>> findAllUsers() {
 
         Iterable<UserEntity> allUsers = userService.findAllUsers();

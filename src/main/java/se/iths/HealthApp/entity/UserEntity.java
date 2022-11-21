@@ -37,7 +37,7 @@ public class UserEntity {
     private List<ResistanceTrainingEntity> resistanceTrainings;
 
     @OneToMany
-    private List<DietEntity> diets;
+    private List<NutritionEntity> diets;
 
     @OneToMany
     private List<EquipmentEntity> equipments;
@@ -66,7 +66,7 @@ public class UserEntity {
         resistanceTraining.addUser(this);
     }
 
-    public void addDiet(DietEntity diet) {
+    public void addDiet(NutritionEntity diet) {
         diets.add(diet);
     }
 
@@ -134,11 +134,11 @@ public class UserEntity {
         this.resistanceTrainings = anaerobics;
     }
 
-    public List<DietEntity> getDiets() {
+    public List<NutritionEntity> getDiets() {
         return diets;
     }
 
-    public void setDiets(List<DietEntity> diets) {
+    public void setDiets(List<NutritionEntity> diets) {
         this.diets = diets;
     }
 

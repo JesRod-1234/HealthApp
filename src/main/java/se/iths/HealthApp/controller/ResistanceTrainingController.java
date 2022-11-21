@@ -22,25 +22,25 @@ public class ResistanceTrainingController {
 
     @GetMapping
     public ResponseEntity<Iterable<ResistanceTrainingEntity>> findAllResistanceTrainingEntries() {
-        Iterable<ResistanceTrainingEntity> allAnaerobicItems = resistanceTrainingService.findAllAnaerobicItems();
-        return new ResponseEntity<>(allAnaerobicItems, HttpStatus.OK);
+        Iterable<ResistanceTrainingEntity> allResistanceTrainingEntries = resistanceTrainingService.findAllResistanceTrainingEntries();
+        return new ResponseEntity<>(allResistanceTrainingEntries, HttpStatus.OK);
     }
 
     @GetMapping("{id}")
     public ResponseEntity<Optional<ResistanceTrainingEntity>> findResistanceTrainingEntryById(@PathVariable Long id) {
-        Optional<ResistanceTrainingEntity> foundAnaerobicItem = resistanceTrainingService.findAnaerobicItemById(id);
-        return new ResponseEntity<>(foundAnaerobicItem, HttpStatus.OK);
+        Optional<ResistanceTrainingEntity> foundResistanceTrainingEntry = resistanceTrainingService.findResistanceTrainingEntryById(id);
+        return new ResponseEntity<>(foundResistanceTrainingEntry, HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<ResistanceTrainingEntity> createResistanceTrainingEntry(@RequestBody ResistanceTrainingEntity anaerobic) {
-        ResistanceTrainingEntity createdAnaerobic = resistanceTrainingService.createAnaerobicItem(anaerobic);
-        return new ResponseEntity<>(createdAnaerobic, HttpStatus.CREATED);
+        ResistanceTrainingEntity createdResistanceTrainingEntry = resistanceTrainingService.createResistanceTrainingEntry(anaerobic);
+        return new ResponseEntity<>(createdResistanceTrainingEntry, HttpStatus.CREATED);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteResistanceTrainingEntry(@PathVariable Long id) {
-        resistanceTrainingService.deleteAnaerobicItem(id);
+        resistanceTrainingService.deleteResistanceTrainingEntry(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
